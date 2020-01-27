@@ -15,7 +15,7 @@ https://openweathermap.org/forecast5
 
 # How to Install/Run App
 1. Clone the repo or download the code on to a mac system.
-2. Open a new terminal window and goto WeatherForecasts directory.
+2. Open a new terminal window and goto WeatherForecast under WeatherForecasts directory.
 3. Run pod install command.
 4. now open WeatherForecast.xcworkspace file in Xcode.
 5. Select device/simulator on which you want to run the app.
