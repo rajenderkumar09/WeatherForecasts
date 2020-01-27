@@ -25,6 +25,7 @@ class SearchViewController: UIViewController {
 			textView.clipsToBounds = true
 		}
 	}
+	
 	@IBOutlet weak var tableView: UITableView! {
 		didSet {
 			tableView.delegate = self

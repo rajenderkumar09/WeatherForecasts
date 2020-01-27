@@ -52,7 +52,6 @@ class WeatherForecastTests: XCTestCase {
 		let minTemperature = Temperature(country: "IN", openWeatherMapDegrees:287.53)
 		let maxTemperature = Temperature(country: "IN", openWeatherMapDegrees:287.53)
 
-
 		let forecast = Forecast(time: forecastTimeString,
 		iconText: forcastIconText,
 		temperature: temperature.degrees,
