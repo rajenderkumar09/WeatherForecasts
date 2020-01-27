@@ -73,24 +73,17 @@ class SearchViewController: UIViewController {
 }
 
 extension SearchViewController : UITextViewDelegate {
-	func textViewDidEndEditing(_ textView: UITextView) {
-		guard var text = textView.text else {
-			return
-		}
-		self.weather = []
-		if text.hasSuffix(",") {
-			text.removeLast()
-		}
-		let cities = text.components(separatedBy: ",")
-		if cities.count < 3 {
+
+	func validateCityName(names:[String]) -> Bool {
+		var hasError = false
+		if names.count < 3 {
 			self.presentAlert(withTitle: "Sorry", message: "Please enter atleast 3 City names seprated by comma")
-			return
-		} else if (cities.count > 7) {
+			hasError = true
+		} else if (names.count > 7) {
 			self.presentAlert(withTitle: "Sorry", message: "You can only enter maximum 7 City names seprated by comma")
-			return
+			hasError = true
 		} else {
-			var hasError = false
-			for city in cities {
+			for city in names {
 				if city.trimmingCharacters(in: .whitespacesAndNewlines).count < 1 {
 					hasError = true
 					break
@@ -98,23 +91,36 @@ extension SearchViewController : UITextViewDelegate {
 			}
 			if hasError == true {
 				self.presentAlert(withTitle: "Sorry", message: "You have entered invalid City names")
-				return
 			}
 		}
-		cities.forEach({ [unowned self] (city) in
-			self.fetchWeather(for: city, handler: { [unowned self] (cityWeather) in
-				DispatchQueue.main.async {
-					if cityWeather.city.count == 0 {
-						ToastCenter.default.cancelAll()
-						_ = Toast(text: "No weather details available for \(city)", duration: Delay.long)
-					} else {
-						self.weather?.append(cityWeather)
+		return !hasError
+	}
+
+	func textViewDidEndEditing(_ textView: UITextView) {
+		guard var text = textView.text else {
+			return
+		}
+		if text.hasSuffix(",") {
+			text.removeLast()
+		}
+		let cities = text.components(separatedBy: ",")
+		if self.validateCityName(names: cities) {
+			self.weather = []
+			cities.forEach({ [unowned self] (city) in
+				self.fetchWeather(for: city, handler: { [unowned self] (cityWeather) in
+					DispatchQueue.main.async {
+						if cityWeather.city.count == 0 {
+							ToastCenter.default.cancelAll()
+							_ = Toast(text: "No weather details available for \(city)", duration: Delay.long)
+						} else {
+							self.weather?.append(cityWeather)
+						}
+						//self.weather?.append(cityWeather)
+						self.tableView.reloadData()
 					}
-					//self.weather?.append(cityWeather)
-					self.tableView.reloadData()
-				}
+				})
 			})
-		})
+		}
 	}
 }
 
