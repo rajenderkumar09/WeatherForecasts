@@ -42,6 +42,34 @@ class WeatherForecastTests: XCTestCase {
 		XCTAssertEqual(weather.temperature, temperature.degrees)
 	}
 
+
+	func testForecastModel() {
+
+		let forecastTimeString = ForecastDateTime(date: 1580515200, timeZone: TimeZone.current).dateTime
+		let weatherIcon = WeatherIcon(condition: 801, iconString: "02n")
+		let forcastIconText = weatherIcon.iconText
+		let temperature = Temperature(country: "IN", openWeatherMapDegrees:287.53)
+		let minTemperature = Temperature(country: "IN", openWeatherMapDegrees:287.53)
+		let maxTemperature = Temperature(country: "IN", openWeatherMapDegrees:287.53)
+
+
+		let forecast = Forecast(time: forecastTimeString,
+		iconText: forcastIconText,
+		temperature: temperature.degrees,
+		description: "few clouds",
+		windSpeed: "2.34",
+		temperatureMin: minTemperature.degrees,
+		temperatureMax: maxTemperature.degrees)
+
+		//Test
+		XCTAssertEqual(forecast.windSpeed, "2.34")
+		XCTAssertEqual(forecast.description, "few clouds")
+		XCTAssertEqual(forecast.iconText, weatherIcon.iconText)
+		XCTAssertEqual(forecast.temperature, temperature.degrees)
+		XCTAssertEqual(forecast.temperatureMin, minTemperature.degrees)
+		XCTAssertEqual(forecast.temperatureMax, maxTemperature.degrees)
+	}
+
     func testPerformanceExample() {
         // This is an example of a performance test case.
         self.measure {
