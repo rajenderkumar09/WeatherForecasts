@@ -25,20 +25,21 @@ class WeatherForecastTests: XCTestCase {
     }
 
 	func testWeatherModel() {
-//		let city = ["name":"Chandigarh", "country":"IN"]
-//		let weather = [["description" : "few clouds", "icon" : "02n","id": 801]]
-//		let json = ["dt" : "1580515200", "city": city, "weather" : weather] as [String : Any]
-//
-//		let weather = Weather(json:json as JSON)
-//		let weatherIcon = WeatherIcon(condition: 801, iconString: "02n")
-//
-//		//Test
-//		XCTAssertEqual(weather.city, "Chandigarh")
-//		XCTAssertEqual(weather.description, "few clouds")
-//		XCTAssertEqual(weather.iconText, weatherIcon.iconText)
-//		XCTAssertEqual(weather.temperature, "Chandigarh")
-//		XCTAssertEqual(weather.city, "Chandigarh")
+		//Given
+		let city = ["name":"Chandigarh", "country":"IN"]
+		let weatherInfo = ["description" : "few clouds", "icon" : "02n","id": 801] as [String : Any]
+		let list = ["dt" : 1580515200, "main": ["temp":287.53, "temp_min":287.53, "temp_max":287.53], "weather" : [weatherInfo]] as [String : Any]
+		let json = ["city": city, "list":[list]] as [String : Any]
 
+		let weather = Weather(json:json as JSON)
+		let weatherIcon = WeatherIcon(condition: 801, iconString: "02n")
+		let temperature = Temperature(country: "IN", openWeatherMapDegrees:287.53)
+
+		//Test
+		XCTAssertEqual(weather.city, "Chandigarh")
+		XCTAssertEqual(weather.description, "few clouds")
+		XCTAssertEqual(weather.iconText, weatherIcon.iconText)
+		XCTAssertEqual(weather.temperature, temperature.degrees)
 	}
 
     func testPerformanceExample() {

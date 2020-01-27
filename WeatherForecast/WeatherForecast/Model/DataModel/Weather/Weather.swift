@@ -19,6 +19,7 @@ struct Weather {
 	var forecasts: [Forecast] = []
 
 	init(json:JSON) {
+		print("JSON:", json)
 		// Get temperature, location and icon and check parsing error
 		guard let city = json["city"] as? JSON, let list = json["list"] as? [JSON], let first = list.first, let main = first["main"] as? JSON, let weatherInfo = first["weather"] as? [JSON], let firstWeather = weatherInfo.first,
 			let dateTime = first["dt"] as? Double
