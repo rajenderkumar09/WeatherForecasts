@@ -24,7 +24,7 @@ https://openweathermap.org/forecast5
 7. Wait till Xcode comiples and run the app on the selected device/simulator.
 
 
-	# Improvements Needed/Pendding:
+# Improvements Needed/Pendding:
 	1. Validations - Show message if user has not given access to location.
 	2. Add Some more unit tests 
 	3. Club weather info date wise for first tab (Current City) and show date in the table section headers.
