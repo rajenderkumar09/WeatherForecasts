@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  AppDelegate+Extension.swift
 //  WeatherForecast
 //
 //  Created by Rajender Sharma on 25/01/20.
@@ -29,11 +29,11 @@ extension AppDelegate {
 		let homeNavController = UINavigationController(rootViewController: homeVC)
 		homeNavController.tabBarItem = UITabBarItem(tabBarSystemItem: .featured, tag: 0)
 
-		let othersVC = OthersViewController(nibName: "OthersViewController", bundle: nil)
-		let othersNavController = UINavigationController(rootViewController: othersVC)
-		othersNavController.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 1)
+		let searchVC = SearchViewController(nibName: "SearchViewController", bundle: nil)
+		let searchNavController = UINavigationController(rootViewController: othersVC)
+		searchNavController.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 1)
 
-		tabbar.viewControllers = [homeNavController, othersNavController]
+		tabbar.viewControllers = [homeNavController, searchNavController]
 
 		return tabbar
 	}

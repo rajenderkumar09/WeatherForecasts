@@ -21,6 +21,8 @@
 		9AAF70DA23DD1BA800B75EFE /* weathericons-regular-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9AAF70D923DD1BA800B75EFE /* weathericons-regular-webfont.ttf */; };
 		9AAF70DD23DD1E9900B75EFE /* ForecastTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AAF70DB23DD1E9900B75EFE /* ForecastTableViewCell.swift */; };
 		9AAF70DE23DD1E9900B75EFE /* ForecastTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AAF70DC23DD1E9900B75EFE /* ForecastTableViewCell.xib */; };
+		9AC90B0123DE7AA900913568 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC90AFF23DE7AA900913568 /* SearchViewController.swift */; };
+		9AC90B0223DE7AA900913568 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AC90B0023DE7AA900913568 /* SearchViewController.xib */; };
 		9AC993F623DC142F00F6C255 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9AC993F523DC142F00F6C255 /* Assets.xcassets */; };
 		9AC993F923DC142F00F6C255 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AC993F723DC142F00F6C255 /* LaunchScreen.storyboard */; };
 		9AC9940423DC143000F6C255 /* WeatherForecastTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC9940323DC143000F6C255 /* WeatherForecastTests.swift */; };
@@ -30,8 +32,6 @@
 		9AC9942823DC14DD00F6C255 /* AppDelegate+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC9941723DC14DD00F6C255 /* AppDelegate+Extension.swift */; };
 		9AC9942923DC14DD00F6C255 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC9941923DC14DD00F6C255 /* AppDelegate.swift */; };
 		9AC9942E23DC14DD00F6C255 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC9942123DC14DD00F6C255 /* Constants.swift */; };
-		9AC9943C23DC1FE600F6C255 /* OthersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC9943A23DC1FE600F6C255 /* OthersViewController.swift */; };
-		9AC9943D23DC1FE600F6C255 /* OthersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AC9943B23DC1FE600F6C255 /* OthersViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +62,8 @@
 		9AAF70D923DD1BA800B75EFE /* weathericons-regular-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "weathericons-regular-webfont.ttf"; sourceTree = "<group>"; };
 		9AAF70DB23DD1E9900B75EFE /* ForecastTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastTableViewCell.swift; sourceTree = "<group>"; };
 		9AAF70DC23DD1E9900B75EFE /* ForecastTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ForecastTableViewCell.xib; sourceTree = "<group>"; };
+		9AC90AFF23DE7AA900913568 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		9AC90B0023DE7AA900913568 /* SearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
 		9AC993E923DC142E00F6C255 /* WeatherForecast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherForecast.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AC993F523DC142F00F6C255 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9AC993F823DC142F00F6C255 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -76,8 +78,6 @@
 		9AC9941723DC14DD00F6C255 /* AppDelegate+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Extension.swift"; sourceTree = "<group>"; };
 		9AC9941923DC14DD00F6C255 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9AC9942123DC14DD00F6C255 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		9AC9943A23DC1FE600F6C255 /* OthersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OthersViewController.swift; sourceTree = "<group>"; };
-		9AC9943B23DC1FE600F6C255 /* OthersViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OthersViewController.xib; sourceTree = "<group>"; };
 		CA8A4BD6F2CB9F15EDBAEC23 /* Pods-WeatherForecastTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherForecastTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherForecastTests/Pods-WeatherForecastTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -171,6 +171,15 @@
 			path = fonts;
 			sourceTree = "<group>";
 		};
+		9AC90AFE23DE7AA900913568 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				9AC90AFF23DE7AA900913568 /* SearchViewController.swift */,
+				9AC90B0023DE7AA900913568 /* SearchViewController.xib */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
 		9AC993E023DC142E00F6C255 = {
 			isa = PBXGroup;
 			children = (
@@ -250,19 +259,10 @@
 		9AC9941A23DC14DD00F6C255 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				9AC90AFE23DE7AA900913568 /* Search */,
 				9AC9943523DC1DFD00F6C255 /* Home */,
-				9AC9943023DC1C8900F6C255 /* Others */,
 			);
 			path = Controllers;
-			sourceTree = "<group>";
-		};
-		9AC9943023DC1C8900F6C255 /* Others */ = {
-			isa = PBXGroup;
-			children = (
-				9AC9943A23DC1FE600F6C255 /* OthersViewController.swift */,
-				9AC9943B23DC1FE600F6C255 /* OthersViewController.xib */,
-			);
-			path = Others;
 			sourceTree = "<group>";
 		};
 		9AC9943523DC1DFD00F6C255 /* Home */ = {
@@ -371,8 +371,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				9AC993F923DC142F00F6C255 /* LaunchScreen.storyboard in Resources */,
-				9AC9943D23DC1FE600F6C255 /* OthersViewController.xib in Resources */,
 				9AAF70DE23DD1E9900B75EFE /* ForecastTableViewCell.xib in Resources */,
+				9AC90B0223DE7AA900913568 /* SearchViewController.xib in Resources */,
 				9AC993F623DC142F00F6C255 /* Assets.xcassets in Resources */,
 				9AAF70DA23DD1BA800B75EFE /* weathericons-regular-webfont.ttf in Resources */,
 				9A08E95623DC623D0012616E /* HomeViewController.xib in Resources */,
@@ -480,11 +480,11 @@
 				9AC9942523DC14DD00F6C255 /* UIViewController+Extension.swift in Sources */,
 				9A08E96A23DC6CBB0012616E /* WeatherIcon.swift in Sources */,
 				9AC9942423DC14DD00F6C255 /* UIFont+Extension.swift in Sources */,
+				9AC90B0123DE7AA900913568 /* SearchViewController.swift in Sources */,
 				9AC9942323DC14DD00F6C255 /* UIApplication+Extension.swift in Sources */,
 				9AC9942823DC14DD00F6C255 /* AppDelegate+Extension.swift in Sources */,
 				9A08E95523DC623D0012616E /* HomeViewController.swift in Sources */,
 				9AAF70D523DD08B500B75EFE /* ForecastDateTime.swift in Sources */,
-				9AC9943C23DC1FE600F6C255 /* OthersViewController.swift in Sources */,
 				9AAF70D223DCFBCE00B75EFE /* Temperature.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

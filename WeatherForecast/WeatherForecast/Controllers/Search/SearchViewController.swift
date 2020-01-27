@@ -1,5 +1,5 @@
 //
-//  OthersViewController.swift
+//  SearchViewController.swift
 //  WeatherForecast
 //
 //  Created by Rajender Sharma on 25/01/20.
@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import Toaster
 
-class OthersViewController: UIViewController {
+class SearchViewController: UIViewController {
 	var weather:[Weather]? = []
 
 	@IBOutlet weak var textView: UITextView! {
@@ -72,7 +72,7 @@ class OthersViewController: UIViewController {
     }
 }
 
-extension OthersViewController : UITextViewDelegate {
+extension SearchViewController : UITextViewDelegate {
 	func textViewDidEndEditing(_ textView: UITextView) {
 		guard var text = textView.text else {
 			return
@@ -119,7 +119,7 @@ extension OthersViewController : UITextViewDelegate {
 }
 
 
-extension OthersViewController : UITableViewDelegate, UITableViewDataSource {
+extension SearchViewController : UITableViewDelegate, UITableViewDataSource {
 
 	func numberOfSections(in tableView: UITableView) -> Int {
 		guard let weather = self.weather else {

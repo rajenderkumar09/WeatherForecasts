@@ -24,6 +24,23 @@ class WeatherForecastTests: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
 
+	func testWeatherModel() {
+//		let city = ["name":"Chandigarh", "country":"IN"]
+//		let weather = [["description" : "few clouds", "icon" : "02n","id": 801]]
+//		let json = ["dt" : "1580515200", "city": city, "weather" : weather] as [String : Any]
+//
+//		let weather = Weather(json:json as JSON)
+//		let weatherIcon = WeatherIcon(condition: 801, iconString: "02n")
+//
+//		//Test
+//		XCTAssertEqual(weather.city, "Chandigarh")
+//		XCTAssertEqual(weather.description, "few clouds")
+//		XCTAssertEqual(weather.iconText, weatherIcon.iconText)
+//		XCTAssertEqual(weather.temperature, "Chandigarh")
+//		XCTAssertEqual(weather.city, "Chandigarh")
+
+	}
+
     func testPerformanceExample() {
         // This is an example of a performance test case.
         self.measure {
