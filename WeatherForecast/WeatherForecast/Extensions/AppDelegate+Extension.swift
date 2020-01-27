@@ -30,7 +30,7 @@ extension AppDelegate {
 		homeNavController.tabBarItem = UITabBarItem(tabBarSystemItem: .featured, tag: 0)
 
 		let searchVC = SearchViewController(nibName: "SearchViewController", bundle: nil)
-		let searchNavController = UINavigationController(rootViewController: othersVC)
+		let searchNavController = UINavigationController(rootViewController: searchVC)
 		searchNavController.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 1)
 
 		tabbar.viewControllers = [homeNavController, searchNavController]

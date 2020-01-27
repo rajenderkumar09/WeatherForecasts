@@ -53,7 +53,7 @@ class SearchViewController: UIViewController {
         }
         self.showProgressHUD()
 		let apiPath = API.host + "2.5/forecast"
-		let parameters = ["appid":API.key, "q":city.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)]
+		let parameters = ["appid":API.key, "q":city]
 		Alamofire.request(apiPath, method: .get, parameters: parameters as Parameters, encoding: URLEncoding.default, headers: nil).responseJSON { response in
 
 			self.hideProgressHUD()
@@ -91,7 +91,7 @@ extension SearchViewController : UITextViewDelegate {
 		} else {
 			var hasError = false
 			for city in cities {
-				if city.count < 1 {
+				if city.trimmingCharacters(in: .whitespacesAndNewlines).count < 1 {
 					hasError = true
 					break
 				}
@@ -104,13 +104,13 @@ extension SearchViewController : UITextViewDelegate {
 		cities.forEach({ [unowned self] (city) in
 			self.fetchWeather(for: city, handler: { [unowned self] (cityWeather) in
 				DispatchQueue.main.async {
-					/*if cityWeather.city.count == 0 {
+					if cityWeather.city.count == 0 {
 						ToastCenter.default.cancelAll()
 						_ = Toast(text: "No weather details available for \(city)", duration: Delay.long)
 					} else {
 						self.weather?.append(cityWeather)
-					}*/
-					self.weather?.append(cityWeather)
+					}
+					//self.weather?.append(cityWeather)
 					self.tableView.reloadData()
 				}
 			})
