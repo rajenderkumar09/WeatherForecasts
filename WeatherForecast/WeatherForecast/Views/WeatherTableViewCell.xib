@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="weathericons-regular-webfont.ttf">
+            <string>WeatherIcons-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="WeatherCell" rowHeight="179" id="KGk-i7-Jjw" customClass="WeatherTableViewCell" customModule="WeatherForecast" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="349" height="179"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="349" height="179"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hft-sK-TBc">
+                        <rect key="frame" x="20" y="8" width="231" height="147"/>
+                        <fontDescription key="fontDescription" name="WeatherIcons-Regular" family="Weather Icons" pointSize="20"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="shV-Xf-NJh">
+                        <rect key="frame" x="20" y="155" width="231" height="0.0"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WhW-fi-Ci6">
+                        <rect key="frame" x="20" y="163" width="231" height="0.0"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qwt-YJ-3vC">
+                        <rect key="frame" x="259" y="8" width="70" height="163"/>
+                        <fontDescription key="fontDescription" name="WeatherIcons-Regular" family="Weather Icons" pointSize="25"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eKE-Xf-ZhX">
+                        <rect key="frame" x="20" y="171" width="231" height="0.0"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="hft-sK-TBc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="07W-KG-b2c"/>
+                    <constraint firstItem="Qwt-YJ-3vC" firstAttribute="leading" secondItem="hft-sK-TBc" secondAttribute="trailing" constant="8" id="5KT-3X-beX"/>
+                    <constraint firstItem="hft-sK-TBc" firstAttribute="top" secondItem="Qwt-YJ-3vC" secondAttribute="top" id="68z-Zb-X7j"/>
+                    <constraint firstItem="shV-Xf-NJh" firstAttribute="top" secondItem="hft-sK-TBc" secondAttribute="bottom" id="FNL-YD-nkF"/>
+                    <constraint firstItem="eKE-Xf-ZhX" firstAttribute="top" secondItem="WhW-fi-Ci6" secondAttribute="bottom" constant="8" id="G7H-Vd-7aJ"/>
+                    <constraint firstItem="hft-sK-TBc" firstAttribute="trailing" secondItem="shV-Xf-NJh" secondAttribute="trailing" id="JFY-vW-yDA"/>
+                    <constraint firstAttribute="bottom" secondItem="eKE-Xf-ZhX" secondAttribute="bottom" constant="8" id="MBd-YO-09a"/>
+                    <constraint firstItem="shV-Xf-NJh" firstAttribute="trailing" secondItem="WhW-fi-Ci6" secondAttribute="trailing" id="MCP-kX-JiS"/>
+                    <constraint firstItem="WhW-fi-Ci6" firstAttribute="leading" secondItem="eKE-Xf-ZhX" secondAttribute="leading" id="PuF-2J-3Dx"/>
+                    <constraint firstItem="WhW-fi-Ci6" firstAttribute="trailing" secondItem="eKE-Xf-ZhX" secondAttribute="trailing" id="bFr-eH-7y9"/>
+                    <constraint firstItem="shV-Xf-NJh" firstAttribute="leading" secondItem="WhW-fi-Ci6" secondAttribute="leading" id="baS-tM-gB3"/>
+                    <constraint firstAttribute="bottom" secondItem="Qwt-YJ-3vC" secondAttribute="bottom" constant="8" id="il5-B4-E8C"/>
+                    <constraint firstItem="Qwt-YJ-3vC" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="0.2" id="jhU-TT-qW9"/>
+                    <constraint firstItem="Qwt-YJ-3vC" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="nYR-4j-fbI"/>
+                    <constraint firstItem="WhW-fi-Ci6" firstAttribute="top" secondItem="shV-Xf-NJh" secondAttribute="bottom" constant="8" id="sCN-d0-yVO"/>
+                    <constraint firstAttribute="trailing" secondItem="Qwt-YJ-3vC" secondAttribute="trailing" constant="20" id="tHT-xu-D28"/>
+                    <constraint firstItem="hft-sK-TBc" firstAttribute="leading" secondItem="shV-Xf-NJh" secondAttribute="leading" id="wWP-SR-OCR"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="dateLabel" destination="eKE-Xf-ZhX" id="DNZ-0t-bJe"/>
+                <outlet property="descriptionLabel" destination="WhW-fi-Ci6" id="ctb-ZZ-fIM"/>
+                <outlet property="temperatureLabel" destination="hft-sK-TBc" id="cYM-0l-99C"/>
+                <outlet property="weatherImage" destination="Qwt-YJ-3vC" id="jdD-3i-Kgg"/>
+                <outlet property="windLabel" destination="shV-Xf-NJh" id="6my-YH-5mK"/>
+            </connections>
+            <point key="canvasLocation" x="90.579710144927546" y="90.736607142857139"/>
+        </tableViewCell>
+    </objects>
+</document>

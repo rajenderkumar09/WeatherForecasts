@@ -12,7 +12,9 @@ import CoreLocation
 import Alamofire
 
 class HomeViewController: UIViewController  {
+
 	var weather:Weather? = nil
+	var weatherService:WeatherServiceProtocol = OpenWeatherMapService()
 
 	lazy var locationManager:CLLocationManager = {
 		let locationManager = CLLocationManager()
@@ -22,20 +24,14 @@ class HomeViewController: UIViewController  {
 		return locationManager
 	}()
 
-	@IBOutlet weak var topView: UIView!
-	@IBOutlet weak var cityName: UILabel!
-	@IBOutlet weak var maxMinTemprature: UILabel!
-	@IBOutlet weak var temperatureLabel: UILabel!
-	@IBOutlet weak var weatherImage: UILabel!
-	@IBOutlet weak var messageLabel: UILabel!
 
 	@IBOutlet weak var tableView: UITableView! {
 		didSet {
 			tableView.delegate = self
 			tableView.dataSource = self
 
-			let cellNib = UINib(nibName: "ForecastTableViewCell", bundle: nil)
-			tableView.register(cellNib, forCellReuseIdentifier: "ForecastCell")
+			let cellNib = UINib(nibName: "WeatherTableViewCell", bundle: nil)
+			tableView.register(cellNib, forCellReuseIdentifier: "WeatherCell")
 		}
 	}
 
@@ -51,7 +47,6 @@ class HomeViewController: UIViewController  {
 	}
 
 	func fetchCurrentLocation() {
-
 		if CLLocationManager.locationServicesEnabled() {
 
 			let status = CLLocationManager.authorizationStatus()
@@ -72,34 +67,6 @@ class HomeViewController: UIViewController  {
 		self.tableView.reloadData()
 	}
 
-	func fetchWeather(for location:CLLocation) {
-
-        //Check for internet connection.
-        guard self.isNetworkAvailable() == true else {
-            return
-        }
-        self.showProgressHUD()
-		let apiPath = API.host + "2.5/forecast"
-		let parameters = ["appid":API.key, "lat":location.coordinate.latitude, "lon":location.coordinate.longitude] as [String : Any]
-        Alamofire.request(apiPath, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: nil).responseJSON { response in
-
-			self.hideProgressHUD()
-			print("Response: \(response)")
-
-			guard let error = response.error else {
-                guard let JSON = response.result.value as? JSON else {
-                    self.presentDefaultErrorAlert()
-                    return
-                }
-                print("Response: \(JSON)")
-				let weather = Weather(json: JSON)
-				self.weather = weather
-				self.showWeatherDetails()
-                return
-            }
-            self.presentAlert(withTitle: "", message: error.localizedDescription)
-        }
-    }
 }
 
 
@@ -113,7 +80,30 @@ extension HomeViewController : CLLocationManagerDelegate {
 			return
 		}
 		self.locationManager.stopUpdatingLocation()
-		self.fetchWeather(for: location)
+
+		//Check Network access
+		guard self.isNetworkAvailable() == true else {
+            return
+        }
+		//Show Progress indicator
+		self.showProgressHUD()
+
+		//Call API to get weather data
+		weatherService.fetchWeatherInfo(location) { [unowned self] (weather, error) in
+
+			//Hide Progress indicator
+			self.hideProgressHUD()
+
+			//Check for error and show alert if error is true
+			guard let error = error else {
+
+				//Hold weather object and show result in the list
+				self.weather = weather
+				self.showWeatherDetails()
+				return
+			}
+			self.presentAlert(withTitle: "Sorry", message: error.localizedDescription)
+		}
 	}
 
 	func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
@@ -136,7 +126,7 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
 
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-		let cell = tableView.dequeueReusableCell(withIdentifier: "ForecastCell", for: indexPath) as! ForecastTableViewCell
+		let cell = tableView.dequeueReusableCell(withIdentifier: "WeatherCell", for: indexPath) as! WeatherTableViewCell
 		guard let weather = self.weather else {
 			return cell
 		}
