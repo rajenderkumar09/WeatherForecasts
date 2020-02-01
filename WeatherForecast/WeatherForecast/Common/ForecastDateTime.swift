@@ -4,29 +4,29 @@
 //
 
 import Foundation
+import AFDateHelper
+
 
 struct ForecastDateTime {
     let rawDate: Double
-    let timeZone: TimeZone
-    
-    init(date: Double, timeZone: TimeZone) {
-        self.timeZone = timeZone
+
+    init(date: Double) {
         self.rawDate = date
     }
-    
-    var shortTime: String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.timeZone = timeZone
-        dateFormatter.dateFormat = "HH:mm"
+
+	var date: Date {
         let date = Date(timeIntervalSince1970: rawDate)
-        return dateFormatter.string(from: date)
+		let dateString = date.toString(format: .custom("dd/MM/yyyy"))
+		return Date(fromString: dateString, format: .custom("dd/MM/yyyy"))!
     }
 
-	var dateTime: String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.timeZone = timeZone
-        dateFormatter.dateFormat = "dd/MM/yyyy"
+    var shortTimeString: String {
         let date = Date(timeIntervalSince1970: rawDate)
-        return dateFormatter.string(from: date)
+		return date.toString(format: .custom("HH:mm"))
+    }
+
+	var dateTimeString: String {
+        let date = Date(timeIntervalSince1970: rawDate)
+		return date.toString(format: .custom("dd MMM, yyyy HH:mm"))
     }
 }

@@ -91,8 +91,8 @@ struct OpenWeatherMapService: WeatherServiceProtocol {
 							return
 						 }
 
-						let forecastTimeString = ForecastDateTime(date: rawDateTime, timeZone: TimeZone.current).shortTime
-						let forecastDateString = ForecastDateTime(date: rawDateTime, timeZone: TimeZone.current).dateTime
+						let forecastTimeString = ForecastDateTime(date: rawDateTime).dateTimeString
+						let forecastDate = ForecastDateTime(date: rawDateTime).date
 
 						let weatherIcon = WeatherIcon(condition: forecastCondition, iconString: forecastIcon)
 						let forcastIconText = weatherIcon.iconText
@@ -101,7 +101,7 @@ struct OpenWeatherMapService: WeatherServiceProtocol {
 						let max = Temperature(country: country, openWeatherMapDegrees: tempMax)
 
 						let forecast = Forecast(time: forecastTimeString,
-												date: Date(fromString: forecastDateString, format: .custom("dd/MM/yyyy"))!,
+												date: forecastDate,
 												iconText: forcastIconText,
 												temperature: forecastTemperature.degrees,
 												description: description,
@@ -151,8 +151,8 @@ struct OpenWeatherMapService: WeatherServiceProtocol {
 					return []
 			}
 
-            let forecastTimeString = ForecastDateTime(date: rawDateTime, timeZone: TimeZone.current).shortTime
-            let forecastDateString = ForecastDateTime(date: rawDateTime, timeZone: TimeZone.current).dateTime
+            let forecastTimeString = ForecastDateTime(date: rawDateTime).shortTimeString
+            let forecastDate = ForecastDateTime(date: rawDateTime).date
 			let weatherIcon = WeatherIcon(condition: forecastCondition, iconString: forecastIcon)
             let forcastIconText = weatherIcon.iconText
 			let forecastTemperature = Temperature(country: country, openWeatherMapDegrees: temperature)
@@ -160,7 +160,7 @@ struct OpenWeatherMapService: WeatherServiceProtocol {
 			let max = Temperature(country: country, openWeatherMapDegrees: tempMax)
 
             let forecast = Forecast(time: forecastTimeString,
-									date: Date(fromString: forecastDateString, format: .custom("dd/MM/yyyy"))!,
+									date: forecastDate,
                                     iconText: forcastIconText,
                                     temperature: forecastTemperature.degrees,
 									description: description,

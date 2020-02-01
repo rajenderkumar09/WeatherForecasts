@@ -34,8 +34,8 @@ class WeatherForecastTests: XCTestCase {
 
 	func testForecastModel() {
 
-		let forecastTimeString = ForecastDateTime(date: 1580515200, timeZone: TimeZone.current).shortTime
-		let forecastDateString = ForecastDateTime(date: 1580515200, timeZone: TimeZone.current).dateTime
+		let forecastTimeString = ForecastDateTime(date: 1580515200).shortTimeString
+		let forecastDate = ForecastDateTime(date: 1580515200).date
 
 		let weatherIcon = WeatherIcon(condition: 801, iconString: "02n")
 		let forcastIconText = weatherIcon.iconText
@@ -44,13 +44,13 @@ class WeatherForecastTests: XCTestCase {
 		let maxTemperature = Temperature(country: "IN", openWeatherMapDegrees:287.53)
 
 		let forecast = Forecast(time: forecastTimeString,
-								date:Date(fromString: forecastDateString, format: .custom("dd/MM/yyyy"))!,
-		iconText: forcastIconText,
-		temperature: temperature.degrees,
-		description: "few clouds",
-		windSpeed: "2.34",
-		temperatureMin: minTemperature.degrees,
-		temperatureMax: maxTemperature.degrees)
+								date: forecastDate,
+								iconText: forcastIconText,
+								temperature: temperature.degrees,
+								description: "few clouds",
+								windSpeed: "2.34",
+								temperatureMin: minTemperature.degrees,
+								temperatureMax: maxTemperature.degrees)
 
 		//Test
 		XCTAssertEqual(forecast.windSpeed, "2.34")
