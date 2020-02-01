@@ -11,6 +11,7 @@ target 'WeatherForecast' do
 	pod 'MBProgressHUD'
 	pod 'ReachabilitySwift'
 	pod 'Toaster'
+	pod 'AFDateHelper'
 	
   target 'WeatherForecastTests' do
     inherit! :search_paths

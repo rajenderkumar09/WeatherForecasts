@@ -25,7 +25,7 @@ struct ForecastDateTime {
 	var dateTime: String {
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = timeZone
-        dateFormatter.dateFormat = "dd MMM, YYYY HH:mm"
+        dateFormatter.dateFormat = "dd/MM/yyyy"
         let date = Date(timeIntervalSince1970: rawDate)
         return dateFormatter.string(from: date)
     }

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="weathericons-regular-webfont.ttf">
+            <string>WeatherIcons-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ForecastCell" id="KGk-i7-Jjw" customClass="ForecastTableViewCell" customModule="WeatherForecast" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ja9-hZ-mrf">
+                        <rect key="frame" x="20" y="0.0" width="50" height="44"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="50" id="MgC-kQ-TWx"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wmJ-sA-DAX">
+                        <rect key="frame" x="78" y="0.0" width="116" height="44"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HAx-Pr-fVQ">
+                        <rect key="frame" x="202" y="0.0" width="50" height="44"/>
+                        <fontDescription key="fontDescription" name="WeatherIcons-Regular" family="Weather Icons" pointSize="20"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WQl-DL-pUB">
+                        <rect key="frame" x="260" y="0.0" width="40" height="44"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="40" id="cpv-IA-Mnv"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="WeatherIcons-Regular" family="Weather Icons" pointSize="20"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="ja9-hZ-mrf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="0cM-Rw-3HP"/>
+                    <constraint firstItem="wmJ-sA-DAX" firstAttribute="bottom" secondItem="HAx-Pr-fVQ" secondAttribute="bottom" id="3le-LI-p6J"/>
+                    <constraint firstItem="WQl-DL-pUB" firstAttribute="top" secondItem="HAx-Pr-fVQ" secondAttribute="top" id="4FU-o4-rRR"/>
+                    <constraint firstAttribute="bottom" secondItem="WQl-DL-pUB" secondAttribute="bottom" id="8Sc-yP-cAr"/>
+                    <constraint firstItem="WQl-DL-pUB" firstAttribute="leading" secondItem="HAx-Pr-fVQ" secondAttribute="trailing" constant="8" id="D20-hY-mxV"/>
+                    <constraint firstAttribute="trailing" secondItem="WQl-DL-pUB" secondAttribute="trailing" constant="20" id="F0b-Sd-UBO"/>
+                    <constraint firstItem="HAx-Pr-fVQ" firstAttribute="width" secondItem="ja9-hZ-mrf" secondAttribute="width" id="NlF-Wv-vLA"/>
+                    <constraint firstItem="wmJ-sA-DAX" firstAttribute="top" secondItem="HAx-Pr-fVQ" secondAttribute="top" id="Peu-8j-wNs"/>
+                    <constraint firstItem="WQl-DL-pUB" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Szw-H4-JdP"/>
+                    <constraint firstItem="WQl-DL-pUB" firstAttribute="bottom" secondItem="HAx-Pr-fVQ" secondAttribute="bottom" id="XSu-yx-BYx"/>
+                    <constraint firstItem="wmJ-sA-DAX" firstAttribute="leading" secondItem="ja9-hZ-mrf" secondAttribute="trailing" constant="8" id="ZPw-6o-CM3"/>
+                    <constraint firstItem="HAx-Pr-fVQ" firstAttribute="leading" secondItem="wmJ-sA-DAX" secondAttribute="trailing" constant="8" id="gSa-y5-6YN"/>
+                    <constraint firstItem="ja9-hZ-mrf" firstAttribute="top" secondItem="wmJ-sA-DAX" secondAttribute="top" id="jAf-Zl-ams"/>
+                    <constraint firstItem="ja9-hZ-mrf" firstAttribute="bottom" secondItem="wmJ-sA-DAX" secondAttribute="bottom" id="yjZ-j8-6EY"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="dateLabel" destination="ja9-hZ-mrf" id="Rte-66-myE"/>
+                <outlet property="descriptionLabel" destination="wmJ-sA-DAX" id="hzc-4d-e9O"/>
+                <outlet property="temperatureLabel" destination="HAx-Pr-fVQ" id="jRJ-1b-Ui1"/>
+                <outlet property="weatherImage" destination="WQl-DL-pUB" id="hc4-Vg-dG9"/>
+            </connections>
+            <point key="canvasLocation" x="-1" y="111"/>
+        </tableViewCell>
+    </objects>
+</document>

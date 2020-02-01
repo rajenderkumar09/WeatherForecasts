@@ -9,6 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="WeatherForecast" customModuleProvider="target">
             <connections>
+                <outlet property="messageLabel" destination="eqS-4M-ZI5" id="yGQ-gg-UWR"/>
                 <outlet property="tableView" destination="VXi-OO-dM5" id="3xm-Sm-HoC"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -23,13 +24,23 @@
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                 </tableView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please allow Location access in the device's settings to see current City weather information." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eqS-4M-ZI5">
+                    <rect key="frame" x="20" y="412" width="374" height="72"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="VXi-OO-dM5" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="5mm-Hj-Kp5"/>
+                <constraint firstItem="eqS-4M-ZI5" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="CaG-5C-NCa"/>
+                <constraint firstItem="eqS-4M-ZI5" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="Qh5-r0-Qfg"/>
                 <constraint firstItem="VXi-OO-dM5" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Z8c-wC-rqN"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="VXi-OO-dM5" secondAttribute="bottom" id="ejs-X3-1Zb"/>
+                <constraint firstItem="eqS-4M-ZI5" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="lAG-RE-eKk"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="VXi-OO-dM5" secondAttribute="trailing" id="oBA-Z6-ogk"/>
+                <constraint firstAttribute="trailing" secondItem="eqS-4M-ZI5" secondAttribute="trailing" constant="20" id="vCU-7U-cDa"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="137.68115942028987" y="122.54464285714285"/>

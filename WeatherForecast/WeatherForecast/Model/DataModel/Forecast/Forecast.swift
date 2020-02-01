@@ -11,6 +11,7 @@ import Foundation
 
 struct Forecast {
   let time: String
+  let date: Date
   let iconText: String
   let temperature: String
   let description: String

@@ -15,6 +15,7 @@ class HomeViewController: UIViewController  {
 
 	var weather:Weather? = nil
 	var weatherService:WeatherServiceProtocol = OpenWeatherMapService()
+	var dayWiseInfo:[Date: [Forecast]] = [:]
 
 	lazy var locationManager:CLLocationManager = {
 		let locationManager = CLLocationManager()
@@ -25,13 +26,21 @@ class HomeViewController: UIViewController  {
 	}()
 
 
+	@IBOutlet weak var messageLabel:UILabel! {
+		didSet {
+			messageLabel.text = "Please allow WeatherForecast to access device's GPS for getting your current city and weather forecasts."
+			messageLabel.isHidden = true
+			messageLabel.numberOfLines = 0
+		}
+	}
+
 	@IBOutlet weak var tableView: UITableView! {
 		didSet {
 			tableView.delegate = self
 			tableView.dataSource = self
 
-			let cellNib = UINib(nibName: "WeatherTableViewCell", bundle: nil)
-			tableView.register(cellNib, forCellReuseIdentifier: "WeatherCell")
+			let cellNib = UINib(nibName: "ForecastTableViewCell", bundle: nil)
+			tableView.register(cellNib, forCellReuseIdentifier: "ForecastCell")
 		}
 	}
 
@@ -39,8 +48,12 @@ class HomeViewController: UIViewController  {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
 		configureView()
-		fetchCurrentLocation()
     }
+
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
+		fetchCurrentLocation()
+	}
 
 	private func configureView() {
 		self.title = "Current City"
@@ -53,9 +66,19 @@ class HomeViewController: UIViewController  {
 			switch status {
 			case .authorizedWhenInUse, .authorizedAlways:
 				self.locationManager.startUpdatingLocation()
+				self.tableView.isHidden = false
+				self.messageLabel.isHidden = true
+
+			case .denied, .restricted:
+				self.messageLabel.isHidden = false
+				self.tableView.isHidden = true
+
 			default:
 				self.locationManager.requestWhenInUseAuthorization()
 			}
+		} else {
+			self.messageLabel.isHidden = false
+			self.tableView.isHidden = true
 		}
 	}
 
@@ -64,9 +87,10 @@ class HomeViewController: UIViewController  {
 			return
 		}
 		self.title = weather.city
+		
+		self.dayWiseInfo = weather.groupedByDate()
 		self.tableView.reloadData()
 	}
-
 }
 
 
@@ -110,33 +134,52 @@ extension HomeViewController : CLLocationManagerDelegate {
 		switch status {
 		case .authorizedAlways, .authorizedWhenInUse:
 			self.fetchCurrentLocation()
+			self.messageLabel.isHidden = true
+			self.tableView.isHidden = false
 		default:
-			print("\(status)")
+			self.messageLabel.isHidden = false
+			self.tableView.isHidden = true
 		}
 	}
 }
 
 extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
+
+	func numberOfSections(in tableView: UITableView) -> Int {
+		return dayWiseInfo.count
+	}
+
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		guard let weather = self.weather else {
+
+		guard let key = self.weather?.section[section], let forecasts = self.dayWiseInfo[key] else {
 			return 0
 		}
-		return weather.forecasts.count
+		return forecasts.count
+	}
+
+
+	func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+		guard let key = self.weather?.section[section]  else {
+			return ""
+		}
+		return key.toString(format: .custom("dd MMMM yyyy"))
 	}
 
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-		let cell = tableView.dequeueReusableCell(withIdentifier: "WeatherCell", for: indexPath) as! WeatherTableViewCell
-		guard let weather = self.weather else {
+		let cell = tableView.dequeueReusableCell(withIdentifier: "ForecastCell", for: indexPath) as! ForecastTableViewCell
+
+		guard let key = self.weather?.section[indexPath.section], let forecasts = self.dayWiseInfo[key] else {
 			return cell
 		}
-		let forecast = weather.forecasts[indexPath.row]
+
+		let forecast = forecasts[indexPath.row]
 		cell.forecast = forecast
 
 		return cell
 	}
 
 	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-		return 100
+		return 40
 	}
 }

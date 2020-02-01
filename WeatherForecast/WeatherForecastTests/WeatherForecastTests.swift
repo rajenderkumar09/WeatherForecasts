@@ -34,7 +34,9 @@ class WeatherForecastTests: XCTestCase {
 
 	func testForecastModel() {
 
-		let forecastTimeString = ForecastDateTime(date: 1580515200, timeZone: TimeZone.current).dateTime
+		let forecastTimeString = ForecastDateTime(date: 1580515200, timeZone: TimeZone.current).shortTime
+		let forecastDateString = ForecastDateTime(date: 1580515200, timeZone: TimeZone.current).dateTime
+
 		let weatherIcon = WeatherIcon(condition: 801, iconString: "02n")
 		let forcastIconText = weatherIcon.iconText
 		let temperature = Temperature(country: "IN", openWeatherMapDegrees:287.53)
@@ -42,6 +44,7 @@ class WeatherForecastTests: XCTestCase {
 		let maxTemperature = Temperature(country: "IN", openWeatherMapDegrees:287.53)
 
 		let forecast = Forecast(time: forecastTimeString,
+								date:Date(fromString: forecastDateString, format: .custom("dd/MM/yyyy"))!,
 		iconText: forcastIconText,
 		temperature: temperature.degrees,
 		description: "few clouds",

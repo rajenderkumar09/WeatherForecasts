@@ -9,6 +9,9 @@
 import Foundation
 import CoreLocation
 import Alamofire
+import AFDateHelper
+
+
 
 struct OpenWeatherMapService: WeatherServiceProtocol {
 
@@ -88,7 +91,9 @@ struct OpenWeatherMapService: WeatherServiceProtocol {
 							return
 						 }
 
-						 let forecastTimeString = ForecastDateTime(date: rawDateTime, timeZone: TimeZone.current).dateTime
+						let forecastTimeString = ForecastDateTime(date: rawDateTime, timeZone: TimeZone.current).shortTime
+						let forecastDateString = ForecastDateTime(date: rawDateTime, timeZone: TimeZone.current).dateTime
+
 						let weatherIcon = WeatherIcon(condition: forecastCondition, iconString: forecastIcon)
 						let forcastIconText = weatherIcon.iconText
 						let forecastTemperature = Temperature(country: country, openWeatherMapDegrees: temperature)
@@ -96,6 +101,7 @@ struct OpenWeatherMapService: WeatherServiceProtocol {
 						let max = Temperature(country: country, openWeatherMapDegrees: tempMax)
 
 						let forecast = Forecast(time: forecastTimeString,
+												date: Date(fromString: forecastDateString, format: .custom("dd/MM/yyyy"))!,
 												iconText: forcastIconText,
 												temperature: forecastTemperature.degrees,
 												description: description,
@@ -145,14 +151,16 @@ struct OpenWeatherMapService: WeatherServiceProtocol {
 					return []
 			}
 
-            let forecastTimeString = ForecastDateTime(date: rawDateTime, timeZone: TimeZone.current).dateTime
-            let weatherIcon = WeatherIcon(condition: forecastCondition, iconString: forecastIcon)
+            let forecastTimeString = ForecastDateTime(date: rawDateTime, timeZone: TimeZone.current).shortTime
+            let forecastDateString = ForecastDateTime(date: rawDateTime, timeZone: TimeZone.current).dateTime
+			let weatherIcon = WeatherIcon(condition: forecastCondition, iconString: forecastIcon)
             let forcastIconText = weatherIcon.iconText
 			let forecastTemperature = Temperature(country: country, openWeatherMapDegrees: temperature)
 			let min = Temperature(country: country, openWeatherMapDegrees: tempMin)
 			let max = Temperature(country: country, openWeatherMapDegrees: tempMax)
 
             let forecast = Forecast(time: forecastTimeString,
+									date: Date(fromString: forecastDateString, format: .custom("dd/MM/yyyy"))!,
                                     iconText: forcastIconText,
                                     temperature: forecastTemperature.degrees,
 									description: description,
